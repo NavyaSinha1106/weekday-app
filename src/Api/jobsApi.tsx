@@ -4,11 +4,6 @@ import { IJobsDetails } from "../types";
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
-const body = JSON.stringify({
-  limit: 10,
-  offset: 0,
-});
-
 export const jobsApi = createApi({
   reducerPath: "jobsApi",
   baseQuery: fetchBaseQuery({
@@ -16,12 +11,24 @@ export const jobsApi = createApi({
     headers: myHeaders,
   }),
   endpoints: (builder) => ({
-    getAllJobs: builder.query<IJobsDetails, void>({
-      query: () => ({
+    getAllJobs: builder.query<IJobsDetails, number>({
+      query: (page) => ({
         url: "/adhoc/getSampleJdJSON",
         method: "POST",
-        body: body,
+        body: JSON.stringify({
+          limit: 10,
+          offset: `${page * 10}`,
+        }),
       }),
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+      merge: (currentCache, newItems) => {
+        currentCache.jdList.push(...newItems.jdList);
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      },
     }),
   }),
 });

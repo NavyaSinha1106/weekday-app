@@ -108,7 +108,7 @@ const JobCard: React.FC<CardsProps> = ({
               sx={{ color: "#4943da", textTransform: "capitalize" }}
               onClick={() => handleExpandClick(data.jdUid)}
             >
-              View More
+              {expanded.includes(data.jdUid) ? "View Less" : "View More"}
             </Button>
           </Box>
           {data.minExp && (
