@@ -23,9 +23,7 @@ import Box from "@mui/material/Box";
 /* Side Navigation Bar - Provides a collapsable menu for easy access to different sections */
 
 const SideNav: React.FC = () => {
-  const { isSidenavOpen } = useContext(AppContext);
-
-  const drawerWidth = 260;
+  const { isSidenavOpen, drawerWidth } = useContext(AppContext);
 
   const openedMixin = () => ({
     width: drawerWidth,
@@ -59,6 +57,7 @@ const SideNav: React.FC = () => {
       sx={{
         backgroundColor: "#fff",
         borderRadius: "0.6em",
+        position: "fixed",
       }}
     >
       <ImageListItem sx={{ my: 2.5 }}>

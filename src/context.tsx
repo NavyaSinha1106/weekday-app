@@ -5,6 +5,7 @@ export const AppContext = createContext<any>(null);
 /* Manages the complex flow of states across multiple screens */
 
 export const RestoreProvider: React.FC<any> = ({ children }) => {
+  const drawerWidth = 260;
   const [isSidenavOpen, setIsSidenavOpen] = useState<Boolean>(false);
 
   return (
@@ -12,6 +13,7 @@ export const RestoreProvider: React.FC<any> = ({ children }) => {
       value={{
         isSidenavOpen,
         setIsSidenavOpen,
+        drawerWidth,
       }}
     >
       {children}

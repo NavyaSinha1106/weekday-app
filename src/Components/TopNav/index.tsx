@@ -14,9 +14,9 @@ import Typography from "@mui/material/Typography";
 /* Top Navigation Bar for the app */
 
 const TopNav: React.FC = () => {
-  const drawerWidth = 260;
   const theme = useTheme();
-  const { isSidenavOpen, setIsSidenavOpen } = useContext(AppContext);
+  const { isSidenavOpen, setIsSidenavOpen, drawerWidth } =
+    useContext(AppContext);
 
   const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
     zIndex: theme.zIndex.drawer + 1,
