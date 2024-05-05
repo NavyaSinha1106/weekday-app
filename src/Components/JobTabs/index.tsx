@@ -33,7 +33,7 @@ const JobTabs: React.FC = () => {
         <TabPanel value="2">
           <AppliedJobs />
         </TabPanel>
-        <TabPanel value="1">
+        <TabPanel sx={{ px: "12px" }} value="1">
           <SearchJobs />
         </TabPanel>
       </TabContext>

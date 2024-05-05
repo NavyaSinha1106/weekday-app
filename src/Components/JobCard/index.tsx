@@ -34,6 +34,7 @@ const JobCard: React.FC<CardsProps> = ({
         flexDirection: "column",
         justifyContent: "space-between",
         height: "95%",
+        minWidth: "280px",
       }}
     >
       <Box>
@@ -96,14 +97,32 @@ const JobCard: React.FC<CardsProps> = ({
           >
             {appText.jobCard.about}:
           </Typography>
-          <Typography
-            variant="body1"
-            sx={{ fontSize: "14px", fontWeight: 400, lineHeight: 1.5 }}
+          <Box
+            sx={{
+              height: expanded.includes(data.jdUid) ? "fit-content" : 190,
+              overflow: "hidden",
+              position: "relative",
+              "&:after": {
+                content: '""',
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                width: "100%",
+                height: "100%",
+                background: expanded.includes(data.jdUid)
+                  ? "none"
+                  : "linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.6) 100%)",
+                pointerEvents: "none",
+              },
+            }}
           >
-            {expanded.includes(data.jdUid)
-              ? data.jobDetailsFromCompany
-              : data.jobDetailsFromCompany.slice(0, 360)}
-          </Typography>
+            <Typography
+              variant="body1"
+              sx={{ fontSize: "14px", fontWeight: 400, lineHeight: 1.5 }}
+            >
+              {data.jobDetailsFromCompany}
+            </Typography>
+          </Box>
           <Box sx={{ textAlign: "center", position: "relative", top: "-5px" }}>
             <Button
               sx={{ color: "#4943da", textTransform: "capitalize" }}

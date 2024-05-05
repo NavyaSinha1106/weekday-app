@@ -70,32 +70,36 @@ const FilterComponent: React.FC = () => {
   );
 
   return (
-    <Box sx={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
+    <Box
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexWrap: "wrap",
+        gap: 1,
+      }}
+    >
       <MultiSelect
         data={RolesOptions}
         label="Roles"
-        placeholder="Roles"
         value={jobRolesFilter}
         onChange={onjobRoleFilterChange}
       />
       <SingleSelect
         data={ExperienceOptions}
         label="Experience"
-        placeholder="Experience"
         value={experienceFilter}
         onChange={onExperienceFilterChange}
       />
       <MultiSelect
         data={LocationOptions}
         label="Location"
-        placeholder="Location"
         value={locationFilter}
         onChange={onLocationFilterChange}
       />
       <SingleSelect
         data={MinSalaryOptions}
         label="Minimum Base Pay Salary"
-        placeholder="Minimum Base Pay Salary"
         value={minBaseFilter}
         onChange={onSalaryFilterChange}
       />

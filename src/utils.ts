@@ -41,20 +41,19 @@ export const RolesOptions = [
   { key: "tech lead", value: "Tech Lead" },
 ];
 
- /**
-   *
-   * @param data : The data list of all the Jobs in the API
-   * @param filters: The selected filters for jobs search
-   *
-   * This function returns the filtered data after preprocessing the entire data,
-   * against the selected filters.
-   */
+/**
+ *
+ * @param data : The data list of all the Jobs in the API
+ * @param filters: The selected filters for jobs search
+ *
+ * This function returns the filtered data after preprocessing the entire data,
+ * against the selected filters.
+ */
 
 export const FilterData = (data: IJob[], filters: IFilters) => {
   let filteredData = [...data];
 
-  console.log({ data, filters });
-
+  // if we have a jobRolesFilter filter the data
   if (filters.jobRolesFilter.length) {
     filteredData = filteredData.filter((job) =>
       filters.jobRolesFilter.includes(job.jobRole)

@@ -15,6 +15,7 @@ import ErrorPage from "../ErrorPage";
 
 const SearchJobs: React.FC = () => {
   const [expanded, setExpanded] = useState<String[]>([]);
+  const [isFilterLoading, setIsFilterLoading] = useState<boolean>(false);
   const [processedData, setProcessedData] = useState<IJob[]>([]);
   const [page, setPage] = useState(0);
 
@@ -43,14 +44,26 @@ const SearchJobs: React.FC = () => {
     }
   }
 
-  /* Handles functionality for infinite scrolling by adding a scroll event listener to the window and when it reaches the bottom of the page then it increment the page by 1  */
-
+  /**
+   *
+   *
+   * Handles functionality for infinite scrolling by adding a scroll event listener to the window and when it reaches
+   * the bottom of the page then it increment the page by 1
+   *
+   */
   useEffect(() => {
     const handleScroll = () => {
       const { scrollTop, clientHeight, scrollHeight } =
         document.documentElement;
-      if (scrollTop + clientHeight >= scrollHeight - 20 && !isError) {
-        console.log("Fetching more data...");
+
+      console.log({ scrollTop, clientHeight, scrollHeight });
+      if (
+        scrollTop + clientHeight >= scrollHeight - 20 &&
+        !isError &&
+        data &&
+        data.jdList.length < data.totalCount
+      ) {
+        console.info("Fetching more data...");
         setPage(page + 1);
       }
     };
@@ -61,9 +74,15 @@ const SearchJobs: React.FC = () => {
     };
   }, [isFetching, page, JSON.stringify(data)]);
 
-  /* Handles the functionality for filtering the data based on the chosen filters and sets the data after processing the filters  */
-
+  /**
+   *
+   *
+   * Handles the functionality for filtering the data based on the chosen filters and sets the data after processing
+   * the filters
+   *
+   */
   useEffect(() => {
+    setIsFilterLoading(true);
     const filterObject = {
       jobRolesFilter: jobRolesFilter.map((jobData) => jobData.key),
       experienceFilter: experienceFilter?.key ?? "",
@@ -74,6 +93,7 @@ const SearchJobs: React.FC = () => {
 
     if (data?.jdList) {
       setProcessedData(FilterData(data.jdList, filterObject));
+      setIsFilterLoading(false);
     }
   }, [
     JSON.stringify(jobRolesFilter),
@@ -84,14 +104,6 @@ const SearchJobs: React.FC = () => {
     JSON.stringify(data?.jdList),
   ]);
 
-  if (isLoading) {
-    <Box
-      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
-    >
-      <CircularProgress />
-    </Box>;
-  }
-
   return (
     <Box>
       {isError ? (
@@ -99,27 +111,52 @@ const SearchJobs: React.FC = () => {
       ) : (
         <Box>
           <FilterComponent />
-          <Grid container spacing={2}>
-            {processedData.map((job: IJob, index: Number) => (
-              <Grid item key={`${job.jdUid}_${index}`} xs={12} sm={6} md={4}>
-                <JobCard
-                  data={job}
-                  expanded={expanded}
-                  handleExpandClick={handleExpandClick}
-                />
-              </Grid>
-            ))}
-          </Grid>
+          {!isLoading && !isFetching && isFilterLoading ? (
+            // show this spinner only when we are filtering the list
+            <Box
+              sx={{
+                height: 100,
+                width: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          ) : (
+            <Grid container spacing={1} sx={{ mt: 2 }}>
+              {processedData.map((job: IJob, index: Number) => (
+                <Grid
+                  item
+                  key={`${job.jdUid}_${index}`}
+                  xs={10}
+                  sm={8}
+                  md={6}
+                  lg={4}
+                >
+                  <JobCard
+                    data={job}
+                    expanded={expanded}
+                    handleExpandClick={handleExpandClick}
+                  />
+                </Grid>
+              ))}
+            </Grid>
+          )}
           <Box
             sx={{
-              height: 100,
+              height: "100px",
               width: "100%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
             }}
           >
-            {isFetching && <CircularProgress />}
+            {(isLoading || isFetching) && (
+              // show spinner whenever we are fetching data
+              <CircularProgress />
+            )}
           </Box>
         </Box>
       )}

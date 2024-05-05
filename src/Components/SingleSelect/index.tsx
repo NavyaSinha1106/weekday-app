@@ -7,7 +7,6 @@ import { ISingleSelectorProps } from "../../types";
 const SingleSelect: React.FC<ISingleSelectorProps> = ({
   data,
   label,
-  placeholder,
   value,
   onChange,
 }) => {
@@ -16,6 +15,7 @@ const SingleSelect: React.FC<ISingleSelectorProps> = ({
       <Autocomplete
         id="single-select"
         options={data}
+        size="small"
         getOptionLabel={(option) => {
           return option.value;
         }}
@@ -24,12 +24,11 @@ const SingleSelect: React.FC<ISingleSelectorProps> = ({
             <TextField
               {...params}
               label={label}
-              placeholder={placeholder}
               InputLabelProps={{ sx: { fontSize: "14px" } }}
             />
           );
         }}
-        sx={{ width: "220px" }}
+        sx={{ minWidth: "220px" }}
         value={value}
         onChange={(e, val) => {
           onChange(val);

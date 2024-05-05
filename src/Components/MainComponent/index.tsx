@@ -18,6 +18,7 @@ const MainComponent: React.FC = () => {
       marginLeft: drawerWidth,
       width: `calc(100% - ${drawerWidth}px)`,
     }),
+    minWidth: "380px",
   }));
 
   return (

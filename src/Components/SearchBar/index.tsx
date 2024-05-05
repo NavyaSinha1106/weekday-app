@@ -7,11 +7,18 @@ const SearchBar: React.FC<ISearchBarProps> = ({ label, value, onChange }) => {
     <TextField
       autoFocus={!!value.length}
       id="search-bar"
+      size="small"
       label={label}
       variant="outlined"
       value={value}
       onChange={(e) => {
         onChange(e.target.value);
+      }}
+      sx={{
+        width: "220px",
+        "& .MuiFormLabel-root": {
+          fontSize: "0.88rem",
+        },
       }}
     />
   );

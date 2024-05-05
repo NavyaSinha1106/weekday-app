@@ -7,7 +7,6 @@ import { IMultiSelectorProps } from "../../types";
 const MultiSelect: React.FC<IMultiSelectorProps> = ({
   data,
   label,
-  placeholder,
   value,
   onChange,
 }) => {
@@ -17,17 +16,17 @@ const MultiSelect: React.FC<IMultiSelectorProps> = ({
         multiple
         limitTags={2}
         id="multiple-select"
+        size="small"
         options={data}
         getOptionLabel={(option) => option.value}
         renderInput={(params) => (
           <TextField
             {...params}
             label={label}
-            placeholder={placeholder}
             InputLabelProps={{ sx: { fontSize: "14px" } }}
           />
         )}
-        sx={{ width: "220px" }}
+        sx={{ minWidth: "220px" }}
         value={value}
         onChange={(e, val) => {
           onChange(val);

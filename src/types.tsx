@@ -26,7 +26,6 @@ export interface ISelectorData {
 export interface ISingleSelectorProps {
   data: ISelectorData[];
   label: string;
-  placeholder: string;
   value?: ISelectorData;
   onChange: any;
 }
@@ -34,7 +33,6 @@ export interface ISingleSelectorProps {
 export interface IMultiSelectorProps {
   data: ISelectorData[];
   label: string;
-  placeholder: string;
   value: ISelectorData[];
   onChange: any;
 }
