@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+# Demo App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A demo job search app built using React, Redux rtk query, TypeScript and Material UI.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+* Filter Component - Allows users to select different filters and search company name to get relevant jobs.
 
-### `npm start`
+* Job Card - Allows to display details about the job listing like salary, experience, location, description and role. It has a View More button to expand the job description.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* Infinite Scroll - Displays new data when user scrolls to botom of the page while caching old data without a load more button.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+* Responsive Design - The UI is responsive for all screen types i.e Laptops, Tabs and Mobiles.
+  
+* Dynamic Side Nav - A side panel that can be toggled open or closed.
 
-### `npm test`
+![image](https://github.com/NavyaSinha1106/weekday-app/assets/105153638/5ecb7d15-6bb8-4b4e-ad23-2b13fc730630)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/NavyaSinha1106/weekday-app/assets/105153638/72fcd23e-6968-4be6-9495-94156c40de25)
 
-### `npm run build`
+![image](https://github.com/NavyaSinha1106/weekday-app/assets/105153638/0b508212-565e-4482-844b-2b338f3f5201)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![image](https://github.com/NavyaSinha1106/weekday-app/assets/105153638/d97e73e0-de23-4b1b-999e-e38f7806f1d7)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![image](https://github.com/NavyaSinha1106/weekday-app/assets/105153638/428c58dd-20c2-4510-818e-b7f0eef1bc0a)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Getting Started: Setting up and running the project
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To run this project you can simply type in the terminal : 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+clone the repository
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+npm install
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm start
+```
