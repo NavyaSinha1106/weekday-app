@@ -1,18 +1,18 @@
 import React from "react";
 import TopNav from "./Components/TopNav";
 import SideNav from "./Components/SideNav";
-import { RestoreProvider } from "./context";
+import { ContextProvider } from "./context";
 import MainComponent from "./Components/MainComponent";
 
 function App() {
   return (
-    <RestoreProvider>
+    <ContextProvider>
       <div className="App">
         <TopNav />
         <SideNav />
         <MainComponent />
       </div>
-    </RestoreProvider>
+    </ContextProvider>
   );
 }
 

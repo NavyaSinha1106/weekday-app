@@ -2,13 +2,18 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import AppliedJobsLogo from "../../assets/applied_jobs.png";
+import ErrorLogo from "../../assets/error_logo.png";
 import Typography from "@mui/material/Typography";
 import appText from "../../PageText";
 
-const AppliedJobs: React.FC = () => {
+const ErrorPage: React.FC = () => {
   return (
     <Box>
+      <ImageList sx={{ display: "flex", justifyContent: "center" }}>
+        <ImageListItem>
+          <img src={ErrorLogo} style={{ height: "100px" }} />
+        </ImageListItem>
+      </ImageList>
       <Typography
         variant="body1"
         color="#015368!important"
@@ -16,15 +21,10 @@ const AppliedJobs: React.FC = () => {
         fontSize="20px"
         textAlign="center"
       >
-        {appText.appliedJobs.text}
+        {appText.errorMsg.message}
       </Typography>
-      <ImageList sx={{ display: "flex", justifyContent: "center" }}>
-        <ImageListItem>
-          <img src={AppliedJobsLogo} />
-        </ImageListItem>
-      </ImageList>
     </Box>
   );
 };
 
-export default AppliedJobs;
+export default ErrorPage;

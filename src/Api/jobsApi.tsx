@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IJobsDetails } from "../types";
 
+/* Data Fetching from the API */
+
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 

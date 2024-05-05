@@ -3,20 +3,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import { styled, Theme, useTheme } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
-import { useContext } from "react";
-import { AppContext } from "../../context";
+import { useAppContext } from "../../context";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import Toolbar from "@mui/material/Toolbar";
 import MuiAppBar, { AppBarProps } from "@mui/material/AppBar";
 import Typography from "@mui/material/Typography";
+import appText from "../../PageText";
 
 /* Top Navigation Bar for the app */
 
 const TopNav: React.FC = () => {
   const theme = useTheme();
-  const { isSidenavOpen, setIsSidenavOpen, drawerWidth } =
-    useContext(AppContext);
+  const { isSidenavOpen, setIsSidenavOpen, drawerWidth } = useAppContext();
 
   const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
     zIndex: theme.zIndex.drawer + 1,
@@ -66,7 +65,7 @@ const TopNav: React.FC = () => {
             component="div"
             sx={{ color: "#000", fontSize: "20px", fontWeight: 600 }}
           >
-            👋 Name
+            👋 {appText.topNav.username}
           </Typography>
         </Toolbar>
       </AppBar>

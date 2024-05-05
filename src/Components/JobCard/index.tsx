@@ -9,6 +9,7 @@ import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
 import { IJob } from "../../types";
+import appText from "../../PageText";
 
 /* Job Card - Displays the deatils of the job posting  */
 
@@ -26,13 +27,13 @@ const JobCard: React.FC<CardsProps> = ({
   return (
     <Card
       sx={{
-        width: `calc(100% / 3 - 32px)`,
         borderRadius: "20px",
         padding: "16px",
         margin: "16px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        height: "95%",
       }}
     >
       <Box>
@@ -40,7 +41,7 @@ const JobCard: React.FC<CardsProps> = ({
           variant="outlined"
           sx={{ fontSize: "9px", fontWeight: "400", my: 1 }}
         >
-          ⏳Posted 3 days ago
+          ⏳{appText.jobCard.timeline}
         </Chip>
         <Box display="flex" gap="0.5rem" sx={{ pt: 1, pb: 2 }}>
           <Avatar>
@@ -85,7 +86,7 @@ const JobCard: React.FC<CardsProps> = ({
               fontSize: "14px",
             }}
           >
-            Estimated Salary: &nbsp;
+            {appText.jobCard.salary}: &nbsp;
             {data.minJdSalary} {data.minJdSalary && "-"} {data.maxJdSalary}{" "}
             {data.salaryCurrencyCode} ✅
           </Typography>
@@ -93,7 +94,7 @@ const JobCard: React.FC<CardsProps> = ({
             variant="h4"
             sx={{ fontWeight: 600, color: "#515151", fontSize: "15px" }}
           >
-            About Company:
+            {appText.jobCard.about}:
           </Typography>
           <Typography
             variant="body1"
@@ -103,7 +104,7 @@ const JobCard: React.FC<CardsProps> = ({
               ? data.jobDetailsFromCompany
               : data.jobDetailsFromCompany.slice(0, 360)}
           </Typography>
-          <Box sx={{ textAlign: "center", position: "relative", top: "-20px" }}>
+          <Box sx={{ textAlign: "center", position: "relative", top: "-5px" }}>
             <Button
               sx={{ color: "#4943da", textTransform: "capitalize" }}
               onClick={() => handleExpandClick(data.jdUid)}
@@ -124,7 +125,7 @@ const JobCard: React.FC<CardsProps> = ({
                   letterSpacing: "1px",
                 }}
               >
-                Minimum Experience
+                {appText.jobCard.experience}
               </Typography>
               <Typography
                 variant="body2"
@@ -161,7 +162,7 @@ const JobCard: React.FC<CardsProps> = ({
             href={data.jdLink}
             variant="body1"
           >
-            ⚡ Easy Apply
+            ⚡ {appText.jobCard.btn1}
           </Link>
         </Button>
         <Button
@@ -172,7 +173,7 @@ const JobCard: React.FC<CardsProps> = ({
             color: "#fff",
           }}
         >
-          <Typography variant="body1">Unlock Refferal Asks</Typography>
+          <Typography variant="body1">{appText.jobCard.btn2}</Typography>
         </Button>
       </CardActions>
     </Card>

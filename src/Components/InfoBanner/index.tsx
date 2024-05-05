@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
+import appText from "../../PageText";
 
 const InfoBanner: React.FC = () => {
   return (
@@ -20,8 +21,7 @@ const InfoBanner: React.FC = () => {
         variant="body1"
         sx={{ py: "16px", px: "20px", fontSize: "14px", fontWeight: 400 }}
       >
-        We, at Weekday, are creating a go-to hub for uncovering the real issues
-        candidates should be aware of before joining a company. &nbsp;
+        {appText.infoBanner.content} &nbsp;
         <Link
           href="#"
           sx={{
@@ -29,7 +29,7 @@ const InfoBanner: React.FC = () => {
             color: "#000",
           }}
         >
-          Access 150+ company reviews here
+          {appText.infoBanner.link}
         </Link>
       </Typography>
     </Box>

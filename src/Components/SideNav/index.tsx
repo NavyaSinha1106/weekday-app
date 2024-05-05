@@ -16,14 +16,14 @@ import Typography from "@mui/material/Typography";
 import ImageListItem from "@mui/material/ImageListItem";
 import WeekDayLogo1 from "../../assets/weekday_logo1.png";
 import WeekDayLogo2 from "../../assets/weekday_logo2.png";
-import { useContext } from "react";
-import { AppContext } from "../../context";
+import { useAppContext } from "../../context";
 import Box from "@mui/material/Box";
+import appText from "../../PageText";
 
 /* Side Navigation Bar - Provides a collapsable menu for easy access to different sections */
 
 const SideNav: React.FC = () => {
-  const { isSidenavOpen, drawerWidth } = useContext(AppContext);
+  const { isSidenavOpen, drawerWidth } = useAppContext();
 
   const openedMixin = () => ({
     width: drawerWidth,
@@ -95,7 +95,9 @@ const SideNav: React.FC = () => {
             textAlign: isSidenavOpen ? "left" : "center",
           }}
         >
-          {isSidenavOpen ? "LOOKING FOR A JOB" : "GET JOBS"}
+          {isSidenavOpen
+            ? `${appText.sideNav.ClosedSideNav.text1}`
+            : `${appText.sideNav.OpenSideNav.text1}`}
         </Typography>
         {[
           "My applied jobs",
@@ -163,7 +165,9 @@ const SideNav: React.FC = () => {
             textAlign: isSidenavOpen ? "left" : "center",
           }}
         >
-          {isSidenavOpen ? "RECOMMEND AND EARN" : "REFER"}
+          {isSidenavOpen
+            ? `${appText.sideNav.ClosedSideNav.text2}`
+            : `${appText.sideNav.OpenSideNav.text2}`}
         </Typography>
         {["Recommend from shortlist", "Refer this extension"].map(
           (text, index) => {

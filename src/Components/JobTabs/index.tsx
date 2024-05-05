@@ -7,6 +7,7 @@ import TabContext from "@mui/lab/TabContext";
 import { useState } from "react";
 import AppliedJobs from "../AppliedJobs";
 import SearchJobs from "../SearchJobs";
+import appText from "../../PageText";
 
 const JobTabs: React.FC = () => {
   const [tabValue, setTabValue] = useState("1");
@@ -24,9 +25,9 @@ const JobTabs: React.FC = () => {
     >
       <TabContext value={tabValue}>
         <Box sx={{ display: "flex", justifyContent: "center" }}>
-          <TabList onChange={handleTabChange} aria-label="lab API tabs example">
-            <Tab label="Applied Jobs" value="2" />
-            <Tab label="Search Jobs" value="1" />
+          <TabList onChange={handleTabChange} aria-label="jobs-tab">
+            <Tab label={`${appText.jobsTab.tab1}`} value="2" />
+            <Tab label={`${appText.jobsTab.tab2}`} value="1" />
           </TabList>
         </Box>
         <TabPanel value="2">

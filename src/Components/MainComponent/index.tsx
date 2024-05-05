@@ -1,15 +1,15 @@
 import * as React from "react";
 import { useContext } from "react";
 import Box from "@mui/material/Box";
-import { AppContext } from "../../context";
 import InfoBanner from "../InfoBanner";
 import JobTabs from "../JobTabs";
 import styled from "styled-components";
+import { useAppContext } from "../../context";
 
 /* Main Component - Displayes the main content of the app */
 
 const MainComponent: React.FC = () => {
-  const { isSidenavOpen, drawerWidth } = useContext(AppContext);
+  const { isSidenavOpen, drawerWidth } = useAppContext();
 
   const MUIBox = styled(Box)(() => ({
     marginLeft: "100px",
